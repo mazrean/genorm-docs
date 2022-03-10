@@ -19,3 +19,7 @@
 * [Delete](usage/delete.md)
 * [Functions](usage/functions.md)
 * [Operators](usage/operators.md)
+
+## Advanced Usage
+
+* [Defined Type](advanced-usage/defined-type.md)
