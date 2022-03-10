@@ -14,5 +14,5 @@
 * [Example Configuration](usage/example-configuration.md)
 * [Insert](usage/insert.md)
 * [Select](usage/select.md)
-* [Task Lists](usage/task-lists.md)
+* [Update](usage/update.md)
 * [Tasks](usage/tasks.md)
