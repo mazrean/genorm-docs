@@ -16,3 +16,5 @@
 * [Select](usage/select.md)
 * [Update](usage/update.md)
 * [Delete](usage/delete.md)
+* [Functions](usage/functions.md)
+* [Operators](usage/operators.md)
