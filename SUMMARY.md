@@ -12,6 +12,7 @@
 ## Usage
 
 * [Example Configuration](usage/example-configuration.md)
+* [Value Type](usage/value-type.md)
 * [Insert](usage/insert.md)
 * [Select](usage/select.md)
 * [Update](usage/update.md)
