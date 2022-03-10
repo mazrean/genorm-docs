@@ -15,4 +15,4 @@
 * [Insert](usage/insert.md)
 * [Select](usage/select.md)
 * [Update](usage/update.md)
-* [Tasks](usage/tasks.md)
+* [Delete](usage/delete.md)
