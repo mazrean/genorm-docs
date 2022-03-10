@@ -116,22 +116,46 @@ messageUserValues, err := genorm.
 	GetAll(db)
 ```
 
-### Insert
+### Select
 
-INSERT文を発行するメソッドチェーンを開始する関数です。第一引数にCLIにより生成されたテーブルを受け取ります。INSERT文はJoinされたテーブルに対しては実行できないため、Joinされたテーブルは与えられません。
+`SELECT`文を発行するメソッドチェーンを開始する関数です。第1引数にCLIにより生成されたテーブルを受け取ります。
+
+### Pluck
+
+`SELECT`文を発行するメソッドチェーンを開始する関数です。第1引数にCLIにより生成されたテーブルを受け取ります。また、第2引数で`SELECT`対象のカラムを受け取ります。
 
 ### Fields(optional)
 
-`INSERT`の対象のカラムを指定します。デフォルトではテーブルの全てのカラムが`INSERT`の対象となります。
+`SELECT`の対象のカラムを指定します。デフォルトではテーブルの全てのカラムが`SELECT`の対象となります。`Pluck`の場合、メソッドチェーン開始時に対象のカラムが指定されているため、使用できません。
 
-### Values(required)
+### Distinct(optional)
 
-INSERTする値を指定します。メソッドチェーンがDoやDoCtxで終了する前にちょうど1回呼び出す必要があります。FieldsでINSERTの対象となっていないカラムに値が入っていた場合は無視されます。
+`SELECT`文に`DISTINCT`を設定します。
 
-### Do
+### Where(optional)
+
+`SELECT`文に`WHERE`句を設定します。第1引数にGo言語での`bool`に対応するexpressionを受け取ります。
+
+### Lock(optional)
+
+`SELECT`文に`FOR UPDATE`、`FOR SHARE`を設定します。第1引数には`genorm.ForUpdate`または`genorm.ForShare`を受け取り、それぞれ`FOR UPDATE`、`FOR SHARE`が設定されます。現在、テーブル指定でのロックや`NO WAIT`、`SKIP LOCKED`などの詳細な設定はサポートしていません。
+
+### GetAll
 
 クエリを実行し、メソッドチェーンを終了します。引数には`database/sql`の`*sql.DB`や`*sql.Tx`を含む`genorm.DB`interfaceを満たす値を受け取り、これを使用してクエリを実行します。
 
-### DoCtx
+### GetAllCtx
 
 クエリを実行し、メソッドチェーンを終了します。第二引数には`database/sql`の`*sql.DB`や`*sql.Tx`を含む`genorm.DB`interfaceを満たす値を受け取り、これを使用してクエリを実行します。また、第一引数で`context.Context`を受け取ります。
+
+### Get
+
+クエリを実行し、メソッドチェーンを終了します。引数には`database/sql`の`*sql.DB`や`*sql.Tx`を含む`genorm.DB`interfaceを満たす値を受け取り、これを使用してクエリを実行します。
+
+1レコードのみを取得する際に使用し、自動で`LIMIT 1`がつきます。このため、`Limit`メソッドと同時に使用することはできず、`Limit`メソッドがメソッドチェーンで既に使用されている場合にはエラーを返します。
+
+### GetCtx
+
+クエリを実行し、メソッドチェーンを終了します。第二引数には`database/sql`の`*sql.DB`や`*sql.Tx`を含む`genorm.DB`interfaceを満たす値を受け取り、これを使用してクエリを実行します。また、第一引数で`context.Context`を受け取ります。
+
+1レコードのみを取得する際に使用し、自動で`LIMIT 1`がつきます。このため、`Limit`メソッドと同時に使用することはできず、`Limit`メソッドがメソッドチェーンで既に使用されている場合にはエラーを返します。
