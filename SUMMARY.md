@@ -13,6 +13,6 @@
 
 * [Example Configuration](usage/example-configuration.md)
 * [Insert](usage/insert.md)
-* [Members](usage/members.md)
+* [Select](usage/select.md)
 * [Task Lists](usage/task-lists.md)
 * [Tasks](usage/tasks.md)
