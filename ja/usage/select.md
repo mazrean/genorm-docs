@@ -28,7 +28,7 @@ userValues, err := genorm.
 
 // SELECT `name`, `created_at` FROM `users`
 // userValues: []orm.UserTable
-userValue, err := genorm.
+userValues, err := genorm.
 	Select(orm.User()).
 	Fields(user.Name, user.CreatedAt).
 	GetAll(db)
@@ -81,7 +81,7 @@ userValues, err := genorm.
 	Select(orm.User()).
 	Fields(user.Name).
 	GroupBy(user.Name).
-	Having(genorm.Gt(genorm.Count(user.IDExpr), genorm.Wrap(int64(10)))).
+	Having(genorm.GtLit(genorm.Count(user.IDExpr, false), genorm.Wrap(int64(10)))).
 	GetAll(db)
 
 // SELECT `id`, `name`, `created_at` FROM `users` FOR UPDATE
@@ -106,9 +106,9 @@ userID, err := genorm.
 // SELECT `users`.`name`, `messages`.`content` FROM `users` INNER JOIN `messages` ON `users`.`id` = `messages`.`user_id`
 // messageUserValues: []orm.MessageUserTable
 userID := orm.MessageUserParseExpr(user.ID)
-userName := orm.MessageUserParseExpr(user.Name)
+userName := orm.MessageUserParse(user.Name)
 messageUserID := orm.MessageUserParseExpr(message.UserID)
-messageContent := orm.MessageUserParseExpr(message.Content)
+messageContent := orm.MessageUserParse(message.Content)
 messageUserValues, err := genorm.
 	Select(orm.User().
 		Message().Join(genorm.Eq(userID, messageUserID))).

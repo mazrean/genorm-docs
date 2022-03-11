@@ -13,7 +13,7 @@ affectedRows, err := genorm.
     Values(&orm.UserTable{
         ID: uuid.New(),
         Name: genorm.Wrap("name"),
-        CreatedAt: time.Now(),
+        CreatedAt: genorm.Wrap(time.Now()),
     }).
     Do(db)
 
@@ -33,7 +33,7 @@ affectedRows, err := genorm.
     Values(&orm.UserTable{
         ID: uuid.New(),
         Name: genorm.Wrap("name"),
-        CreatedAt: time.Now(),
+        CreatedAt: genorm.Wrap(time.Now()),
     }).
     DoCtx(context.Background(), db)
 ```

@@ -29,7 +29,7 @@ affectedRows, err = genorm.
     Set(
         genorm.AssignLit(user.Name, genorm.Wrap("name")),
     ).
-    Where(genorm.EqLit(user.ID, uuid.New())).
+    Where(genorm.EqLit(user.IDExpr, uuid.New())).
     Do(db)
 
 // UPDATE `users` SET `name`="name" ORDER BY `created_at` LIMIT 1

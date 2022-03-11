@@ -20,7 +20,7 @@ affectedRows, err = genorm.
 // DELETE FROM `users` WHERE `id`={{uuid.New()}} 
 affectedRows, err = genorm.
     Delete(orm.User()).
-    Where(genorm.EqLit(user.ID, uuid.New())).
+    Where(genorm.EqLit(user.IDExpr, uuid.New())).
     Do(db)
 
 // DELETE FROM `users` ORDER BY `created_at` LIMIT 1
