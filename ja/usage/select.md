@@ -2,7 +2,7 @@
 
 SQLの`SELECT`文は`genorm.Select`関数または`genorm.Pluck`関数を用いて実行できます。
 
-`genorm.Select`関数で始まり、`Get`、`GetCtx`、`GetAll`、`GetAllCtx`のいずれかで終わる必要がありますが、それ以外の順番は入れ替えても問題ありません。ただし、同一のメソッドチェーンないで2度`OrderBy`以外の同じメソッドを実行した場合、実行時に`Get`、`GetCtx`、`GetAll`、`GetAllCtx`がクエリを実行せずにエラーを返します。
+`genorm.Select`関数で始まり、`Get`、`GetCtx`、`GetAll`、`GetAllCtx`のいずれかで終わる必要がありますが、それ以外の順番は入れ替えても問題ありません。ただし、同一のメソッドチェーン内で2度`OrderBy`以外の同じメソッドを実行した場合、実行時に`Get`、`GetCtx`、`GetAll`、`GetAllCtx`がクエリを実行せずにエラーを返します。
 
 #### 例
 
