@@ -15,9 +15,10 @@ import (
 )
 
 type User struct {
-	ID       uuid.UUID `genorm:"id"`
-	Name     string    `genorm:"name"`
-	Message  genorm.Ref[Message]
+	ID        uuid.UUID `genorm:"id"`
+	Name      string    `genorm:"name"`
+	CreatedAt time.Time `genorm:"created_at"`
+	Message   genorm.Ref[Message]
 }
 
 func (u *User) TableName() string {
