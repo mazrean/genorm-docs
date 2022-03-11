@@ -1,6 +1,6 @@
 # Install
 
-GenORMはCLIにより生成したコードでテーブルのJoinなどを行い、クエリの発行は`genorm`パッケージを利用して行います。このため、CLIとPackage両方のinstallが必要です。
+GenORMではCLIでコードの生成を行います。クエリの呼び出しには`genorm`packageを使用します。このため、CLIとPackage両方のinstallが必要です。
 
 #### CLI
 

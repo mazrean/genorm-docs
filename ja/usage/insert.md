@@ -6,7 +6,7 @@ SQLの`INSERT`文は`genorm.Insert`関数を用いて実行できます。
 
 #### 例
 
-```
+```go
 // INSERT INTO `users` (`id`, `name`, `created_at`) VALUES ({{uuid.New()}}, "name", {{time.Now()}})
 affectedRows, err := genorm.
     Insert(orm.User()).

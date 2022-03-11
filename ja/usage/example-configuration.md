@@ -2,7 +2,7 @@
 
 この章で以下のようなConfigurationを例として使用します。
 
-```
+```go
 //go:generate genorm -source=$GOFILE -destination=genorm -package=orm -module=github.com/mazrean/genorm-workspace/genorm
 
 package main

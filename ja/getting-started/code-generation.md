@@ -29,7 +29,7 @@ Configurationファイルなどに`//go:generate`ディレクティブを書く�
 
 コード生成先ディレクトリのmodule名を指定します。
 
-例えば、以下のようなディレクトリ構成でgo.modで指定されたmodule名が`github.com/mazrean/genorm-workspace`である場合は`github.com/mazrean/genorm-workspace/genorm`となります。
+例えば、以下のようなディレクトリ構成で`go.mod`で指定されたmodule名が`github.com/mazrean/genorm-workspace`である場合は`github.com/mazrean/genorm-workspace/genorm`となります。
 
 ```
 .

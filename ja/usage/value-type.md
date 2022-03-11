@@ -6,7 +6,7 @@ GenORMではSQLの表現を以下の3つの種類に分類し、各SQLの表現�
 * Expr
 * Column
 
-また、`uuid.UUID`などの「その型自体が`database/sql`の`sql.Scanner`を実装しており、pointerが`database/sql/driver`の`driver.Valuer`を実装している型」を`genorm.ExprType`interfaceに入れることができます。
+また、`uuid.UUID`などの「その型自体が[sql.Scanner](https://pkg.go.dev/database/sql#Scanner)を実装しており、pointerが[driver.Valuer](https://pkg.go.dev/database/sql/driver#Valuer)を実装している型」を`genorm.ExprType`interfaceに入れることができます。
 
 ### Literal
 

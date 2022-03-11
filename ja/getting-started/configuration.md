@@ -2,7 +2,7 @@
 
 Goの構造体を用いて、Configurationファイルにテーブル構成について記述します。この後のコード生成で同一識別子の構造体や関数が生成されるため、以下のようにコード本体とは異なるbuild tagを設定することをお勧めします。
 
-```
+```go
 //go:build genorm
 // +build genorm
 ```
@@ -15,7 +15,7 @@ Goの構造体を用いて、Configurationファイルにテーブル構成に�
 
 `users`テーブル
 
-```
+```go
 type User struct {
     // ColumnやJoin可能なテーブルの情報
 }
@@ -27,7 +27,7 @@ func (*User) TableName() string {
 
 ### Column
 
-カラムについてはstructのfieldとして設定します。カラム名は`genorm`タグの値として設定します。fieldの型には
+カラムについてはstructのfieldとして設定します。カラム名は`genorm`タグの値として設定します。fieldの型には以下が使用できます。
 
 * `bool`
 * `int`, `int8`, `int16`, `int32`, `int64`
@@ -38,34 +38,34 @@ func (*User) TableName() string {
 * その型自体が`database/sql`の`sql.Scanner`を実装しており、pointerが`database/sql/driver`の`driver.Valuer`を実装している型
   * ex)`uuid.UUID`([github.com/google/uuid](https://github.com/google/uuid))
 
-が使用できます。
-
 #### 例
 
 `users`テーブルに`id`、`name`、`created_at`カラムがある場合
 
-```
+```go
 import (
     "time"
     "github.com/google/uuid"
 )
 
 type User struct {
-    ID uuid.UUID `genorm:"id"`
-    Name string `genorm:"name"`
-    CreatedAt time.Time `genorm:"created_at"`
+	ID        uuid.UUID `genorm:"id"`
+	Name      string    `genorm:"name"`
+	CreatedAt time.Time `genorm:"created_at"`
 }
 ```
 
 ### Relation
 
 テーブルがJoin可能であることを示します。型が`genorm.Ref[T]`であるfieldでRelationを表します。`genorm.Ref`の型パラメーターにはJoin先のテーブルを表すstructを指定します。
+また、現在同じテーブルを2回Joinで使うことができません。
+このため、`User`構造体内で`User`構造体へ`genorm.Ref`を貼ることは意味がないためできません。
 
 #### 例
 
 `users`テーブルに`messages`テーブルをJoinできる場合
 
-```
+```go
 import "github.com/mazrean/genorm"
 
 type User struct {

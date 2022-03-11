@@ -6,7 +6,7 @@ SQLの`SELECT`文は`genorm.Select`関数または`genorm.Pluck`関数を用い�
 
 #### 例
 
-```
+```go
 // SELECT `id`, `name`, `created_at` FROM `users`
 // userValues: []orm.UserTable
 userValues, err := genorm.

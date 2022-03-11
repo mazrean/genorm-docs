@@ -4,7 +4,7 @@ GenORMは`database/sql`の`*sql.DB`/`*sql.Tx`を用いてクエリを実行し�
 
 #### 例
 
-```
+```go
 import (
   "database/sql"
   _ "github.com/go-sql-driver/mysql"

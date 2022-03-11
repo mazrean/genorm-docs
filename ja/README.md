@@ -17,7 +17,7 @@ Generics導入後のGoのためのクエリビルダーです。
 
 文字列のカラム`` `users`.`name` ``は`string`の値と比較することはできますが、`int`の値と比較するとコンパイルエラーとなります。
 
-```
+```go
 // correct
 userValues, err := genorm.
 	Select(orm.User()).
@@ -35,7 +35,7 @@ userValues, err := genorm.
 
 `users`テーブルに対する`SELECT`文で`users`テーブルの`id`カラムは使用できますが、`messages`テーブルの`id`カラムを使用するとコンパイルエラーとなります。
 
-```
+```go
 // correct
 userValues, err := genorm.
 	Select(orm.User()).

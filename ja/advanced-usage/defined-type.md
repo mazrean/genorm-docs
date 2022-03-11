@@ -4,7 +4,7 @@
 
 Usageの例として使用したConfigurationファイルでは`messages`テーブルの`id`カラムと`user_id`カラムは共に`uuid.UUID`型となっています。このため、
 
-```
+```go
 messageValues, err := genorm.
 	Select(orm.Message()).
 	Where(genorm.Eq(message.IDExpr, message.UserIDExpr)).
@@ -17,7 +17,7 @@ messageValues, err := genorm.
 
 このような時に
 
-```
+```go
 type MessageID uuid.UUID
 
 func (mid MessageID) Scan(src any) error {
@@ -43,7 +43,7 @@ func (uid *UserID) Value() (driver.Value, error) {
 
 このようにすることで、messageのidとuserのidを別の型として扱うことができ、
 
-```
+```go
 messageValues, err := genorm.
 	Select(orm.Message()).
 	Where(genorm.Eq(message.IDExpr, message.UserIDExpr)).

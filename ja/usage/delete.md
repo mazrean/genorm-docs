@@ -6,7 +6,7 @@ SQLのUPDATE文は`genorm.Update`関数を用いて実行できます。
 
 #### 例
 
-```
+```go
 // DELETE FROM `users`
 affectedRows, err = genorm.
     Delete(orm.User()).
