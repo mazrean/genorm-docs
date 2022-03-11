@@ -1,0 +1,459 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Code Generation · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="conectiong-to-database.html" />
+    
+    
+    <link rel="prev" href="configuration.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索すると入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    GenORM
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Getting Started</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="install.html">
+            
+                <a href="install.html">
+            
+                    
+                    Install
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="configuration.html">
+            
+                <a href="configuration.html">
+            
+                    
+                    Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.3" data-path="code-generation.html">
+            
+                <a href="code-generation.html">
+            
+                    
+                    Code Generation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="conectiong-to-database.html">
+            
+                <a href="conectiong-to-database.html">
+            
+                    
+                    Conectiong to Database
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Usage</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../usage/example-configuration.html">
+            
+                <a href="../usage/example-configuration.html">
+            
+                    
+                    Example Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../usage/value-type.html">
+            
+                <a href="../usage/value-type.html">
+            
+                    
+                    Value Type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../usage/insert.html">
+            
+                <a href="../usage/insert.html">
+            
+                    
+                    Insert
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../usage/select.html">
+            
+                <a href="../usage/select.html">
+            
+                    
+                    Select
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../usage/update.html">
+            
+                <a href="../usage/update.html">
+            
+                    
+                    Update
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../usage/delete.html">
+            
+                <a href="../usage/delete.html">
+            
+                    
+                    Delete
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="../usage/functions.html">
+            
+                <a href="../usage/functions.html">
+            
+                    
+                    Functions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="../usage/operators.html">
+            
+                <a href="../usage/operators.html">
+            
+                    
+                    Operators
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Advanced Usage</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../advanced-usage/defined-type.html">
+            
+                <a href="../advanced-usage/defined-type.html">
+            
+                    
+                    Defined Type
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            GitBookで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Code Generation</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="code-generation">Code Generation</h1>
+<p>Configuration&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x66F8;&#x3044;&#x305F;&#x3089;<code>genorm</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x7528;&#x3044;&#x3066;&#x30B3;&#x30FC;&#x30C9;&#x751F;&#x6210;&#x3057;&#x307E;&#x3059;&#x3002;<code>genorm</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;flag&#x306E;&#x6982;&#x8981;&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#x901A;&#x308A;&#x3067;&#x3059;&#x3002;</p>
+<pre><code>$ genorm -help
+Usage of ./genorm:
+  -destination string
+        The destination file to write.
+  -join-num int
+        The number of joins to generate. (default 5)
+  -module string
+        The root module name to use.
+  -package string
+        The root package name to use.
+  -source string
+        The source file to parse.
+  -version
+        If true, output version information.
+</code></pre><p>Configuration&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306A;&#x3069;&#x306B;<code>//go:generate</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x66F8;&#x304F;&#x3053;&#x3068;&#x3067;<code>go generate</code>&#x306B;&#x3088;&#x308A;&#x30B3;&#x30FC;&#x30C9;&#x751F;&#x6210;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
+<h3 id="destinationrequired">destination(required)</h3>
+<p>&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#x5BFE;&#x8C61;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3067;&#x3059;&#x3002;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3057;&#x3066;&#x3044;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x304B;&#x3089;&#x306E;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;&#x3001;&#x7D76;&#x5BFE;&#x30D1;&#x30B9;&#x3067;&#x6307;&#x5B9A;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;&#x624B;&#x3067;&#x66F8;&#x304F;&#x30B3;&#x30FC;&#x30C9;&#x3068;&#x306F;&#x7570;&#x306A;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x304A;&#x52E7;&#x3081;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<h3 id="modulerequired">module(required)</h3>
+<p>&#x30B3;&#x30FC;&#x30C9;&#x751F;&#x6210;&#x5148;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;module&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x4F8B;&#x3048;&#x3070;&#x3001;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;&#x3067;go.mod&#x3067;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;module&#x540D;&#x304C;<code>github.com/mazrean/genorm-workspace</code>&#x3067;&#x3042;&#x308B;&#x5834;&#x5408;&#x306F;<code>github.com/mazrean/genorm-workspace/genorm</code>&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+<pre><code>.
+&#x251C;&#x2500;&#x2500; genorm //&#x751F;&#x6210;&#x5148;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;
+&#x2514;&#x2500;&#x2500; go.mod
+</code></pre><h3 id="packagerequired">package(required)</h3>
+<p>&#x30B3;&#x30FC;&#x30C9;&#x751F;&#x6210;&#x5148;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x76F4;&#x4E0B;&#x306E;package&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x4F8B;&#x3048;&#x3070;&#x3001;<code>destination</code>flag&#x3067;<code>./genorm</code>&#x3092;&#x6307;&#x5B9A;&#x3057;<code>package</code>flag&#x306B;orm&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x305F;&#x3068;&#x304D;&#x3001;<code>./genorm</code>&#x76F4;&#x4E0B;&#x306B;&#x751F;&#x6210;&#x3055;&#x308C;&#x308B;<code>genorm.go</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5148;&#x982D;&#x306B;<code>package orm</code>&#x304C;&#x66F8;&#x304D;&#x8FBC;&#x307E;&#x308C;&#x3001;<code>./genorm</code>&#x76F4;&#x4E0B;&#x304C;<code>orm</code>package&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+<h3 id="sourcerequired">source(required)</h3>
+<p>Configuration&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D1;&#x30B9;&#x3067;&#x3059;&#x3002;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3057;&#x3066;&#x3044;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x304B;&#x3089;&#x306E;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;&#x3001;&#x7D76;&#x5BFE;&#x30D1;&#x30B9;&#x3067;&#x6307;&#x5B9A;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
+<h3 id="join-num">join-num</h3>
+<p>Join&#x53EF;&#x80FD;&#x306A;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x6570;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x306F;5&#x3067;&#x3059;&#x3002;</p>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>&#x30B3;&#x30FC;&#x30C9;&#x751F;&#x6210;&#x6642;&#x9593;&#x306F;&#x3053;&#x306E;&#x5024;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x6307;&#x6570;&#x7684;&#x306B;&#x5897;&#x52A0;&#x3057;&#x307E;&#x3059;&#x3002;&#x5927;&#x304D;&#x304F;&#x3059;&#x308B;&#x969B;&#x306B;&#x306F;&#x30B3;&#x30FC;&#x30C9;&#x751F;&#x6210;&#x306B;&#x304B;&#x304B;&#x308B;&#x6642;&#x9593;&#x306B;&#x6CE8;&#x610F;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;&#x307E;&#x305F;&#x3001;&#x30B3;&#x30FC;&#x30C9;&#x751F;&#x6210;&#x6642;&#x9593;&#x304C;&#x9577;&#x3044;&#x5834;&#x5408;&#x306F;&#x3053;&#x306E;&#x5024;&#x3092;&#x5C0F;&#x3055;&#x304F;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x691C;&#x8A0E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
+</div></div></p>
+<h3 id="version">version</h3>
+<p>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="configuration.html" class="navigation navigation-prev " aria-label="Previous page: Configuration">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="conectiong-to-database.html" class="navigation navigation-next " aria-label="Next page: Conectiong to Database">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Code Generation","level":"2.3","depth":1,"next":{"title":"Conectiong to Database","level":"2.4","depth":1,"path":"getting-started/conectiong-to-database.md","ref":"getting-started/conectiong-to-database.md","articles":[]},"previous":{"title":"Configuration","level":"2.2","depth":1,"path":"getting-started/configuration.md","ref":"getting-started/configuration.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"getting-started/code-generation.md","mtime":"2022-03-10T15:00:48.760Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-11T02:46:41.670Z"},"basePath":"..","book":{"language":"ja"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
