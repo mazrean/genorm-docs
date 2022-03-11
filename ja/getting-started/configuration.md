@@ -60,6 +60,8 @@ type User struct {
 テーブルがJoin可能であることを示します。型が`genorm.Ref[T]`であるfieldでRelationを表します。`genorm.Ref`の型パラメーターにはJoin先のテーブルを表すstructを指定します。
 また、現在同じテーブルを2回Joinで使うことができません。
 このため、`User`構造体内で`User`構造体へ`genorm.Ref`を貼ることは意味がないためできません。
+また、現在識別子の重複防止が不完全です。
+このため、
 
 #### 例
 

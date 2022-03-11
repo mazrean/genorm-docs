@@ -24,10 +24,14 @@ SQLでexpressionとして扱う値です。
 
 例えば、`genorm.EqLit(user.IDExpr, uuid.New())`の返り値はusersテーブルのidカラムを使用しており、SQLの中で真偽値となるため、`*orm.UserTable`と`bool`を型パラメーターとして持つExprとなります。
 
-テーブルのカラムは`users`テーブルの`id`カラムであれば`users.IDExpr`のように、テーブルに対応するpackage内の`~Expr`という名前の変数を用いることで`Expr`として使用できます。
+Joinを含まないテーブルのカラムは、`users`テーブルの`id`カラムであれば`users.IDExpr`のように、テーブルに対応するpackage内の`~Expr`という名前の変数を用いることで`Expr`として使用できます。
+Joinを含むテーブルのカラムは、`users INNER JOIN messages ON users.id = messages.user_id`であれば、`orm.MessageUserParseExpr(user.ID)`のように、テーブルに対応する`~ParseExpr`という関数を使ってテーブルの`Expr`に変換できます。
 
 ### Column
 
 SQLでカラム名として扱われる値です。
 
 この値はカラムを含むテーブルに対応する型とExprが対応する`genorm.ExprType`interfaceに当てはまる型を型パラメーターとして持ちます。
+
+Joinを含まないテーブルのカラムは、`users`テーブルの`id`カラムであれば`users.ID`のように、テーブルに対応するpackage内の変数を用いることで`Column`として使用できます。
+Joinを含むテーブルのカラムは、`users INNER JOIN messages ON users.id = messages.user_id`であれば、`orm.MessageUserParse(user.ID)`のように、テーブルに対応する`~Parse`という関数を使ってテーブルの`Column`に変換できます。
