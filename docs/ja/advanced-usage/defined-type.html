@@ -342,39 +342,42 @@
                                 <h1 id="defined-type">Defined Type</h1>
 <p><code>genorm.ExprType</code>interface&#x3092;&#x6E80;&#x305F;&#x3059;&#x72EC;&#x81EA;&#x578B;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3001;&#x3055;&#x3089;&#x306B;&#x5F37;&#x529B;&#x306B;SQL&#x306E;&#x30DF;&#x30B9;&#x3092;&#x9632;&#x6B62;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
 <p>Usage&#x306E;&#x4F8B;&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3057;&#x305F;Configuration&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;<code>messages</code>&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;<code>id</code>&#x30AB;&#x30E9;&#x30E0;&#x3068;<code>user_id</code>&#x30AB;&#x30E9;&#x30E0;&#x306F;&#x5171;&#x306B;<code>uuid.UUID</code>&#x578B;&#x3068;&#x306A;&#x3063;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x3053;&#x306E;&#x305F;&#x3081;&#x3001;</p>
-<pre><code>messageValues, err := genorm.
+<pre><code class="lang-go">messageValues, err := genorm.
     Select(orm.Message()).
     Where(genorm.Eq(message.IDExpr, message.UserIDExpr)).
     GetAll(db)
-</code></pre><p>&#x306E;&#x3088;&#x3046;&#x306A;&#x30B3;&#x30FC;&#x30C9;&#x306F;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x306A;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</p>
+</code></pre>
+<p>&#x306E;&#x3088;&#x3046;&#x306A;&#x30B3;&#x30FC;&#x30C9;&#x306F;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x306A;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</p>
 <p>&#x3057;&#x304B;&#x3057;&#x3001;message&#x306E;id&#x3068;user&#x306E;id&#x3092;&#x6BD4;&#x8F03;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306F;&#x307B;&#x3068;&#x3093;&#x3069;&#x306A;&#x3044;&#x306F;&#x305A;&#x3067;&#x3059;&#x3002;</p>
 <p>&#x3053;&#x306E;&#x3088;&#x3046;&#x306A;&#x6642;&#x306B;</p>
-<pre><code>type MessageID uuid.UUID
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> MessageID uuid.UUID
 
-func (mid MessageID) Scan(src any) error {
-    return uuid.UUID(mid).Scan(src)
+<span class="hljs-keyword">func</span> (mid MessageID) Scan(src any) error {
+    <span class="hljs-keyword">return</span> uuid.UUID(mid).Scan(src)
 }
 
-func (mid *MessageID) Value() (driver.Value, error) {
-    return (*uuid.UUID)(mid).Value()
+<span class="hljs-keyword">func</span> (mid *MessageID) Value() (driver.Value, error) {
+    <span class="hljs-keyword">return</span> (*uuid.UUID)(mid).Value()
 }
 
-type UserID uuid.UUID
+<span class="hljs-keyword">type</span> UserID uuid.UUID
 
-func (uid UserID) Scan(src any) error {
-    return uuid.UUID(uid).Scan(src)
+<span class="hljs-keyword">func</span> (uid UserID) Scan(src any) error {
+    <span class="hljs-keyword">return</span> uuid.UUID(uid).Scan(src)
 }
 
-func (uid *UserID) Value() (driver.Value, error) {
-    return (*uuid.UUID)(uid).Value()
+<span class="hljs-keyword">func</span> (uid *UserID) Value() (driver.Value, error) {
+    <span class="hljs-keyword">return</span> (*uuid.UUID)(uid).Value()
 }
-</code></pre><p>&#x306E;&#x3088;&#x3046;&#x306A;Defined Type&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3001;Configuration&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;<code>messages</code>&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;<code>id</code>&#x30AB;&#x30E9;&#x30E0;&#x3068;<code>user_id</code>&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x305D;&#x308C;&#x305E;&#x308C;<code>MessageID</code>&#x578B;&#x3001;<code>UserID</code>&#x578B;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</code></pre>
+<p>&#x306E;&#x3088;&#x3046;&#x306A;Defined Type&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3001;Configuration&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;<code>messages</code>&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;<code>id</code>&#x30AB;&#x30E9;&#x30E0;&#x3068;<code>user_id</code>&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x305D;&#x308C;&#x305E;&#x308C;<code>MessageID</code>&#x578B;&#x3001;<code>UserID</code>&#x578B;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 <p>&#x3053;&#x306E;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3001;message&#x306E;id&#x3068;user&#x306E;id&#x3092;&#x5225;&#x306E;&#x578B;&#x3068;&#x3057;&#x3066;&#x6271;&#x3046;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x3001;</p>
-<pre><code>messageValues, err := genorm.
+<pre><code class="lang-go">messageValues, err := genorm.
     Select(orm.Message()).
     Where(genorm.Eq(message.IDExpr, message.UserIDExpr)).
     GetAll(db)
-</code></pre><p>&#x304C;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+</code></pre>
+<p>&#x304C;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
 
                                 
                                 </section>
@@ -414,7 +417,7 @@ func (uid *UserID) Value() (driver.Value, error) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Defined Type","level":"4.1","depth":1,"previous":{"title":"Operators","level":"3.8","depth":1,"path":"usage/operators.md","ref":"usage/operators.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"advanced-usage/defined-type.md","mtime":"2022-03-10T15:00:48.760Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-11T02:46:41.670Z"},"basePath":"..","book":{"language":"ja"}});
+            gitbook.page.hasChanged({"page":{"title":"Defined Type","level":"4.1","depth":1,"previous":{"title":"Operators","level":"3.8","depth":1,"path":"usage/operators.md","ref":"usage/operators.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"advanced-usage/defined-type.md","mtime":"2022-03-11T05:16:12.812Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-11T05:17:49.868Z"},"basePath":"..","book":{"language":"ja"}});
         });
     </script>
 </div>

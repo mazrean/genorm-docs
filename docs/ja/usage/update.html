@@ -345,41 +345,42 @@
 <p>SQL&#x306E;UPDATE&#x6587;&#x306F;<code>genorm.Update</code>&#x95A2;&#x6570;&#x3092;&#x7528;&#x3044;&#x3066;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
 <p><code>genorm.Update</code>&#x95A2;&#x6570;&#x3067;&#x59CB;&#x307E;&#x308A;&#x3001;<code>Do</code>&#x3001;<code>DoCtx</code>&#x306E;&#x3044;&#x305A;&#x308C;&#x304B;&#x3067;&#x7D42;&#x308F;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x304C;&#x3001;&#x305D;&#x308C;&#x4EE5;&#x5916;&#x306E;&#x9806;&#x756A;&#x306F;&#x5165;&#x308C;&#x66FF;&#x3048;&#x3066;&#x3082;&#x554F;&#x984C;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;&#x305F;&#x3060;&#x3057;&#x3001;&#x540C;&#x4E00;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x30C1;&#x30A7;&#x30FC;&#x30F3;&#x306A;&#x3044;&#x3067;2&#x5EA6;<code>OrderBy</code>&#x4EE5;&#x5916;&#x306E;&#x540C;&#x3058;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3057;&#x305F;&#x5834;&#x5408;&#x3001;&#x5B9F;&#x884C;&#x6642;&#x306B;<code>Do</code>&#x3001;<code>DoCtx</code>&#x304C;&#x30AF;&#x30A8;&#x30EA;&#x3092;&#x5B9F;&#x884C;&#x305B;&#x305A;&#x306B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 <h4 id="&#x4F8B;">&#x4F8B;</h4>
-<pre><code>// UPDATE `users` SET `name`=&quot;name&quot;
+<pre><code class="lang-go"><span class="hljs-comment">// UPDATE `users` SET `name`=&quot;name&quot;</span>
 affectedRows, err = genorm.
     Update(orm.User()).
     Set(
-        genorm.AssignLit(user.Name, genorm.Wrap(&quot;name&quot;)),
+        genorm.AssignLit(user.Name, genorm.Wrap(<span class="hljs-string">&quot;name&quot;</span>)),
     ).
     Do(db)
 
-// UPDATE `users` SET `name`=&quot;name&quot;
+<span class="hljs-comment">// UPDATE `users` SET `name`=&quot;name&quot;</span>
 affectedRows, err = genorm.
     Update(orm.User()).
     Set(
-        genorm.AssignLit(user.Name, genorm.Wrap(&quot;name&quot;)),
+        genorm.AssignLit(user.Name, genorm.Wrap(<span class="hljs-string">&quot;name&quot;</span>)),
     ).
     DoCtx(context.Background(), db)
 
-// UPDATE `users` SET `name`=&quot;name&quot; WHERE `id`={{uuid.New()}} 
+<span class="hljs-comment">// UPDATE `users` SET `name`=&quot;name&quot; WHERE `id`={{uuid.New()}} </span>
 affectedRows, err = genorm.
     Update(orm.User()).
     Set(
-        genorm.AssignLit(user.Name, genorm.Wrap(&quot;name&quot;)),
+        genorm.AssignLit(user.Name, genorm.Wrap(<span class="hljs-string">&quot;name&quot;</span>)),
     ).
     Where(genorm.EqLit(user.IDExpr, uuid.New())).
     Do(db)
 
-// UPDATE `users` SET `name`=&quot;name&quot; ORDER BY `created_at` LIMIT 1
+<span class="hljs-comment">// UPDATE `users` SET `name`=&quot;name&quot; ORDER BY `created_at` LIMIT 1</span>
 affectedRows, err = genorm.
     Update(orm.User()).
     Set(
-        genorm.AssignLit(user.Name, genorm.Wrap(&quot;name&quot;)),
+        genorm.AssignLit(user.Name, genorm.Wrap(<span class="hljs-string">&quot;name&quot;</span>)),
     ).
     OrderBy(genorm.Desc, user.CreatedAt).
-    Limit(1).
+    Limit(<span class="hljs-number">1</span>).
     Do(db)
-</code></pre><h3 id="update">Update</h3>
+</code></pre>
+<h3 id="update">Update</h3>
 <p><code>UPDATE</code>&#x6587;&#x3092;&#x767A;&#x884C;&#x3059;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x30C1;&#x30A7;&#x30FC;&#x30F3;&#x3092;&#x958B;&#x59CB;&#x3059;&#x308B;&#x95A2;&#x6570;&#x3067;&#x3059;&#x3002;&#x7B2C;1&#x5F15;&#x6570;&#x306B;CLI&#x306B;&#x3088;&#x308A;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x53D7;&#x3051;&#x53D6;&#x308A;&#x307E;&#x3059;&#x3002;</p>
 <h3 id="setrequired">Set(required)</h3>
 <p><code>UPDATE</code>&#x3067;&#x5024;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x5024;&#x306E;&#x7D44;&#x307F;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;&#x5F15;&#x6570;&#x306B;&#x306F;&#x53EF;&#x5909;&#x9577;&#x306E;<code>*TableAssignExpr[T]</code>&#x578B;&#x3092;&#x53D7;&#x3051;&#x53D6;&#x308A;&#x307E;&#x3059;&#x3002;<code>*TableAssignExpr[T]</code>&#x578B;&#x306E;&#x5024;&#x306F;<code>genorm.Assign</code>&#x95A2;&#x6570;&#x307E;&#x305F;&#x306F;<code>genorm.AssignLit</code>&#x95A2;&#x6570;&#x306E;&#x8FD4;&#x308A;&#x5024;&#x3068;&#x3057;&#x3066;&#x5F97;&#x3089;&#x308C;&#x307E;&#x3059;&#x3002;</p>
@@ -432,7 +433,7 @@ affectedRows, err = genorm.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Update","level":"3.5","depth":1,"next":{"title":"Delete","level":"3.6","depth":1,"path":"usage/delete.md","ref":"usage/delete.md","articles":[]},"previous":{"title":"Select","level":"3.4","depth":1,"path":"usage/select.md","ref":"usage/select.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"usage/update.md","mtime":"2022-03-11T02:08:07.162Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-11T02:46:41.670Z"},"basePath":"..","book":{"language":"ja"}});
+            gitbook.page.hasChanged({"page":{"title":"Update","level":"3.5","depth":1,"next":{"title":"Delete","level":"3.6","depth":1,"path":"usage/delete.md","ref":"usage/delete.md","articles":[]},"previous":{"title":"Select","level":"3.4","depth":1,"path":"usage/select.md","ref":"usage/select.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"usage/update.md","mtime":"2022-03-11T05:17:12.416Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-11T05:17:49.868Z"},"basePath":"..","book":{"language":"ja"}});
         });
     </script>
 </div>
