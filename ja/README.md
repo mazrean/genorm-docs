@@ -1,6 +1,6 @@
 # GenORM
 
-Generics導入後のGoのためのクエリビルダーです。
+Go言語のジェネリクスを利用したSQLのミスを防ぐSQL Builder
 
 ### 特徴
 

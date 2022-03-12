@@ -41,6 +41,16 @@ affectedRows, err = genorm.
     OrderBy(genorm.Desc, user.CreatedAt).
     Limit(1).
     Do(db)
+
+// UPDATE `users` INNER JOIN `messages` ON `users.id` = `messages`.`id` SET `content`="hello world"
+userIDColumn := orm.MessageUserParseExpr(user.ID)
+messageUserIDColumn := orm.MessageUserParseExpr(message.UserID)
+messageContent := orm.MessageUserParse(message.Content)
+affectedRows, err := genorm.
+  Update(orm.User().
+		Message().Join(genorm.Eq(userID, messageUserID))).
+  Set(genorm.AssignLit(messageContent, genorm.Wrap("hello world"))).
+  Do(db)
 ```
 
 ### Update

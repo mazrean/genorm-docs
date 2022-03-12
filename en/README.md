@@ -1,6 +1,6 @@
 # GenORM
 
-SQL builder for the Golang after the introduction of Generics.
+SQL Builder to prevent SQL mistakes using Go language generics
 
 ### Feature
 
@@ -12,8 +12,6 @@ By mapping SQL expressions to appropriate golang types using generics
 Many SQL mistakes can be discovered at the time of compilation that are not prevented by traditional Go language ORMs or query builders, such as
 
 It also supports many CRUD syntaxes in SQL.
-
-Translated with www.DeepL.com/Translator (free version)
 
 #### Example 1
 
