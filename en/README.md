@@ -5,11 +5,10 @@ SQL Builder to prevent SQL mistakes using Go language generics
 ### Feature
 
 By mapping SQL expressions to appropriate golang types using generics
+Many SQL mistakes can be discovered at the time of compilation that are not prevented by traditional Go language ORMs or query builders, such as
 
 * Compilation errors occur when using values of different Go types in SQL, such as for `=` comparisons or UPDATE value updates.
 * Compilation error when using column names from a table that cannot be used
-
-Many SQL mistakes can be discovered at the time of compilation that are not prevented by traditional Go language ORMs or query builders, such as
 
 It also supports many CRUD syntaxes in SQL.
 
