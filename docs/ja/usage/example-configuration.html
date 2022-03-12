@@ -21,7 +21,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
                 
             
                 
@@ -356,39 +356,39 @@
                                 
                                 <h1 id="example-configuration">Example Configuration</h1>
 <p>&#x3053;&#x306E;&#x7AE0;&#x3067;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306A;Configuration&#x3092;&#x4F8B;&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3057;&#x307E;&#x3059;&#x3002;</p>
-<pre><code class="lang-go"><span class="hljs-comment">//go:generate genorm -source=$GOFILE -destination=genorm -package=orm -module=github.com/mazrean/genorm-workspace/genorm</span>
+<pre class="language-"><code class="lang-go"><span class="token comment">//go:generate genorm -source=$GOFILE -destination=genorm -package=orm -module=github.com/mazrean/genorm-workspace/genorm</span>
 
-<span class="hljs-keyword">package</span> main
+<span class="token keyword">package</span> main
 
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;time&quot;</span>
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;time&quot;</span>
 
-    <span class="hljs-string">&quot;github.com/google/uuid&quot;</span>
-    <span class="hljs-string">&quot;github.com/mazrean/genorm&quot;</span>
-)
+    <span class="token string">&quot;github.com/google/uuid&quot;</span>
+    <span class="token string">&quot;github.com/mazrean/genorm&quot;</span>
+<span class="token punctuation">)</span>
 
-<span class="hljs-keyword">type</span> User <span class="hljs-keyword">struct</span> {
-    ID        uuid.UUID <span class="hljs-string">`genorm:&quot;id&quot;`</span>
-    Name      <span class="hljs-keyword">string</span>    <span class="hljs-string">`genorm:&quot;name&quot;`</span>
-    CreatedAt time.Time <span class="hljs-string">`genorm:&quot;created_at&quot;`</span>
-    Message   genorm.Ref[Message]
-}
+<span class="token keyword">type</span> User <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    ID        uuid<span class="token punctuation">.</span>UUID <span class="token string">`genorm:&quot;id&quot;`</span>
+    Name      <span class="token builtin">string</span>    <span class="token string">`genorm:&quot;name&quot;`</span>
+    CreatedAt time<span class="token punctuation">.</span>Time <span class="token string">`genorm:&quot;created_at&quot;`</span>
+    Message   genorm<span class="token punctuation">.</span>Ref<span class="token punctuation">[</span>Message<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">func</span> (u *User) TableName() <span class="hljs-keyword">string</span> {
-    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;users&quot;</span>
-}
+<span class="token keyword">func</span> <span class="token punctuation">(</span>u <span class="token operator">*</span>User<span class="token punctuation">)</span> <span class="token function">TableName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;users&quot;</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">type</span> Message <span class="hljs-keyword">struct</span> {
-    ID        uuid.UUID <span class="hljs-string">`genorm:&quot;id&quot;`</span>
-    UserID    uuid.UUID <span class="hljs-string">`genorm:&quot;user_id&quot;`</span>
-    Content   <span class="hljs-keyword">string</span>    <span class="hljs-string">`genorm:&quot;content&quot;`</span>
-    CreatedAt time.Time <span class="hljs-string">`genorm:&quot;created_at&quot;`</span>
-    User      genorm.Ref[User]
-}
+<span class="token keyword">type</span> Message <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    ID        uuid<span class="token punctuation">.</span>UUID <span class="token string">`genorm:&quot;id&quot;`</span>
+    UserID    uuid<span class="token punctuation">.</span>UUID <span class="token string">`genorm:&quot;user_id&quot;`</span>
+    Content   <span class="token builtin">string</span>    <span class="token string">`genorm:&quot;content&quot;`</span>
+    CreatedAt time<span class="token punctuation">.</span>Time <span class="token string">`genorm:&quot;created_at&quot;`</span>
+    User      genorm<span class="token punctuation">.</span>Ref<span class="token punctuation">[</span>User<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">func</span> (m *Message) TableName() <span class="hljs-keyword">string</span> {
-    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;messages&quot;</span>
-}
+<span class="token keyword">func</span> <span class="token punctuation">(</span>m <span class="token operator">*</span>Message<span class="token punctuation">)</span> <span class="token function">TableName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;messages&quot;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 
                                 
@@ -433,7 +433,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Example Configuration","level":"3.1","depth":1,"next":{"title":"Value Type","level":"3.2","depth":1,"path":"usage/value-type.md","ref":"usage/value-type.md","articles":[]},"previous":{"title":"Conectiong to Database","level":"2.4","depth":1,"path":"getting-started/conectiong-to-database.md","ref":"getting-started/conectiong-to-database.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"usage/example-configuration.md","mtime":"2022-03-11T05:34:53.280Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-11T11:25:28.765Z"},"basePath":"..","book":{"language":"ja"}});
+            gitbook.page.hasChanged({"page":{"title":"Example Configuration","level":"3.1","depth":1,"next":{"title":"Value Type","level":"3.2","depth":1,"path":"usage/value-type.md","ref":"usage/value-type.md","articles":[]},"previous":{"title":"Conectiong to Database","level":"2.4","depth":1,"path":"getting-started/conectiong-to-database.md","ref":"getting-started/conectiong-to-database.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints","prism","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"usage/example-configuration.md","mtime":"2022-03-11T05:34:53.280Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-12T12:44:34.986Z"},"basePath":"..","book":{"language":"ja"}});
         });
     </script>
 </div>

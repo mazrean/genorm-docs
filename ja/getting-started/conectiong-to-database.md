@@ -1,6 +1,6 @@
 # Conectiong to Database
 
-GenORMは`database/sql`の`*sql.DB`/`*sql.Tx`を用いてクエリを実行します。このため、データベースへの接続は`database/sql`と同様に行えます。ただし、現在動作確認はMySQL、MariaDBでしか行えていません。
+GenORMは[`*sql.DB`](https://pkg.go.dev/database/sql#DB)/[`*sql.Tx`](https://pkg.go.dev/database/sql#Tx)を用いてクエリを実行します。このため、データベースへの接続は`database/sql`と同様に行えます。ただし、現在動作確認はMySQL、MariaDBでしか行えていません。
 
 #### 例
 

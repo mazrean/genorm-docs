@@ -21,7 +21,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
                 
             
                 
@@ -356,20 +356,20 @@
                                 
                                 <h1 id="configuration">Configuration</h1>
 <p>Go&#x306E;&#x69CB;&#x9020;&#x4F53;&#x3092;&#x7528;&#x3044;&#x3066;&#x3001;Configuration&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x69CB;&#x6210;&#x306B;&#x3064;&#x3044;&#x3066;&#x8A18;&#x8FF0;&#x3057;&#x307E;&#x3059;&#x3002;&#x3053;&#x306E;&#x5F8C;&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x751F;&#x6210;&#x3067;&#x540C;&#x4E00;&#x8B58;&#x5225;&#x5B50;&#x306E;&#x69CB;&#x9020;&#x4F53;&#x3084;&#x95A2;&#x6570;&#x304C;&#x751F;&#x6210;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#x3001;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x30B3;&#x30FC;&#x30C9;&#x672C;&#x4F53;&#x3068;&#x306F;&#x7570;&#x306A;&#x308B;build tag&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x304A;&#x52E7;&#x3081;&#x3057;&#x307E;&#x3059;&#x3002;</p>
-<pre><code class="lang-go"><span class="hljs-comment">//go:build genorm</span>
-<span class="hljs-comment">// +build genorm</span>
+<pre class="language-"><code class="lang-go"><span class="token comment">//go:build genorm</span>
+<span class="token comment">// +build genorm</span>
 </code></pre>
 <h3 id="table">Table</h3>
 <p>&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306F;struct&#x3067;&#x8868;&#x73FE;&#x3057;&#x307E;&#x3059;&#x3002;&#x307E;&#x305F;&#x3001;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;&#x306F;struct&#x306E;pointer&#x3092;reciever&#x306B;&#x3068;&#x308B;<code>TableName</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 <h4 id="&#x4F8B;">&#x4F8B;</h4>
 <p><code>users</code>&#x30C6;&#x30FC;&#x30D6;&#x30EB;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">type</span> User <span class="hljs-keyword">struct</span> {
-    <span class="hljs-comment">// Column&#x3084;Join&#x53EF;&#x80FD;&#x306A;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x60C5;&#x5831;</span>
-}
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> User <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Column&#x3084;Join&#x53EF;&#x80FD;&#x306A;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x60C5;&#x5831;</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">func</span> (*User) TableName() <span class="hljs-keyword">string</span> {
-    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;users&quot;</span>
-}
+<span class="token keyword">func</span> <span class="token punctuation">(</span><span class="token operator">*</span>User<span class="token punctuation">)</span> <span class="token function">TableName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;users&quot;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h3 id="column">Column</h3>
 <p>&#x30AB;&#x30E9;&#x30E0;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;struct&#x306E;field&#x3068;&#x3057;&#x3066;&#x8A2D;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;&#x30AB;&#x30E9;&#x30E0;&#x540D;&#x306F;<code>genorm</code>&#x30BF;&#x30B0;&#x306E;&#x5024;&#x3068;&#x3057;&#x3066;&#x8A2D;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;field&#x306E;&#x578B;&#x306B;&#x306F;&#x4EE5;&#x4E0B;&#x304C;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
@@ -387,43 +387,44 @@
 </ul>
 <h4 id="&#x4F8B;">&#x4F8B;</h4>
 <p><code>users</code>&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306B;<code>id</code>&#x3001;<code>name</code>&#x3001;<code>created_at</code>&#x30AB;&#x30E9;&#x30E0;&#x304C;&#x3042;&#x308B;&#x5834;&#x5408;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;time&quot;</span>
-    <span class="hljs-string">&quot;github.com/google/uuid&quot;</span>
-)
+<pre class="language-"><code class="lang-go"><span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;time&quot;</span>
+    <span class="token string">&quot;github.com/google/uuid&quot;</span>
+<span class="token punctuation">)</span>
 
-<span class="hljs-keyword">type</span> User <span class="hljs-keyword">struct</span> {
-    ID        uuid.UUID <span class="hljs-string">`genorm:&quot;id&quot;`</span>
-    Name      <span class="hljs-keyword">string</span>    <span class="hljs-string">`genorm:&quot;name&quot;`</span>
-    CreatedAt time.Time <span class="hljs-string">`genorm:&quot;created_at&quot;`</span>
-}
+<span class="token keyword">type</span> User <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    ID        uuid<span class="token punctuation">.</span>UUID <span class="token string">`genorm:&quot;id&quot;`</span>
+    Name      <span class="token builtin">string</span>    <span class="token string">`genorm:&quot;name&quot;`</span>
+    CreatedAt time<span class="token punctuation">.</span>Time <span class="token string">`genorm:&quot;created_at&quot;`</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h3 id="relation">Relation</h3>
 <p>&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x304C;Join&#x53EF;&#x80FD;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x3092;&#x793A;&#x3057;&#x307E;&#x3059;&#x3002;&#x578B;&#x304C;<code>genorm.Ref[T]</code>&#x3067;&#x3042;&#x308B;field&#x3067;Relation&#x3092;&#x8868;&#x3057;&#x307E;&#x3059;&#x3002;<code>genorm.Ref</code>&#x306E;&#x578B;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30FC;&#x306B;&#x306F;Join&#x5148;&#x306E;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x8868;&#x3059;struct&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;
 &#x307E;&#x305F;&#x3001;&#x73FE;&#x5728;&#x540C;&#x3058;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;2&#x56DE;Join&#x3067;&#x4F7F;&#x3046;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#x3002;
-&#x3053;&#x306E;&#x305F;&#x3081;&#x3001;<code>User</code>&#x69CB;&#x9020;&#x4F53;&#x5185;&#x3067;<code>User</code>&#x69CB;&#x9020;&#x4F53;&#x3078;<code>genorm.Ref</code>&#x3092;&#x8CBC;&#x308B;&#x3053;&#x3068;&#x306F;&#x610F;&#x5473;&#x304C;&#x306A;&#x3044;&#x305F;&#x3081;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#x3002;
-&#x307E;&#x305F;&#x3001;&#x73FE;&#x5728;&#x8B58;&#x5225;&#x5B50;&#x306E;&#x91CD;&#x8907;&#x9632;&#x6B62;&#x304C;&#x4E0D;&#x5B8C;&#x5168;&#x3067;&#x3059;&#x3002;
-&#x3053;&#x306E;&#x305F;&#x3081;&#x3001;</p>
+&#x3053;&#x306E;&#x305F;&#x3081;&#x3001;<code>User</code>&#x69CB;&#x9020;&#x4F53;&#x5185;&#x3067;<code>User</code>&#x69CB;&#x9020;&#x4F53;&#x3078;<code>genorm.Ref</code>&#x3092;&#x8CBC;&#x308B;&#x3053;&#x3068;&#x306F;&#x610F;&#x5473;&#x304C;&#x306A;&#x3044;&#x305F;&#x3081;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#x3002;</p>
+<p>&#x307E;&#x305F;&#x3001;&#x73FE;&#x5728;Join&#x5F8C;&#x306E;&#x8B58;&#x5225;&#x5B50;&#x306E;&#x91CD;&#x8907;&#x9632;&#x6B62;&#x304C;&#x4E0D;&#x5B8C;&#x5168;&#x3067;&#x3059;&#x3002;
+&#x3053;&#x306E;&#x305F;&#x3081;&#x3001;<code>User</code>&#x69CB;&#x9020;&#x4F53;&#x3068;<code>Message</code>&#x69CB;&#x9020;&#x4F53;&#x306E;&#x9593;&#x306B;Relation&#x304C;&#x8CBC;&#x3089;&#x308C;&#x3066;&#x304A;&#x308A;&#x3001;<code>MessageUserJoined</code>&#x3068;&#x3044;&#x3046;&#x69CB;&#x9020;&#x4F53;&#x3067;&#x8868;&#x3055;&#x308C;&#x308B;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x304C;&#x3042;&#x308B;&#x6642;&#x306A;&#x3069;&#x306B;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;&#x30B3;&#x30FC;&#x30C9;&#x304C;&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;
+&#x3053;&#x306E;&#x3088;&#x3046;&#x306A;&#x5834;&#x5408;&#x306B;&#x306F;&#x69CB;&#x9020;&#x4F53;&#x540D;&#x306A;&#x3069;&#x306E;&#x8ABF;&#x6574;&#x3092;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
 <h4 id="&#x4F8B;">&#x4F8B;</h4>
 <p><code>users</code>&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306B;<code>messages</code>&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;Join&#x3067;&#x304D;&#x308B;&#x5834;&#x5408;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;github.com/mazrean/genorm&quot;</span>
+<pre class="language-"><code class="lang-go"><span class="token keyword">import</span> <span class="token string">&quot;github.com/mazrean/genorm&quot;</span>
 
-<span class="hljs-keyword">type</span> User <span class="hljs-keyword">struct</span> {
-    <span class="hljs-comment">// Column&#x306E;&#x60C5;&#x5831;</span>
-    Message genorm.Ref[Message]
-}
+<span class="token keyword">type</span> User <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Column&#x306E;&#x60C5;&#x5831;</span>
+    Message genorm<span class="token punctuation">.</span>Ref<span class="token punctuation">[</span>Message<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">func</span> (*User) TableName() <span class="hljs-keyword">string</span> {
-    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;users&quot;</span>
-}
+<span class="token keyword">func</span> <span class="token punctuation">(</span><span class="token operator">*</span>User<span class="token punctuation">)</span> <span class="token function">TableName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;users&quot;</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">type</span> Message <span class="hljs-keyword">struct</span> {
-    <span class="hljs-comment">// Column&#x306E;&#x60C5;&#x5831;</span>
-}
+<span class="token keyword">type</span> Message <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Column&#x306E;&#x60C5;&#x5831;</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">func</span> (*Message) TableName() <span class="hljs-keyword">string</span> {
-    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;messages&quot;</span>
-}
+<span class="token keyword">func</span> <span class="token punctuation">(</span><span class="token operator">*</span>Message<span class="token punctuation">)</span> <span class="token function">TableName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;messages&quot;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 
                                 
@@ -468,7 +469,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Configuration","level":"2.2","depth":1,"next":{"title":"Code Generation","level":"2.3","depth":1,"path":"getting-started/code-generation.md","ref":"getting-started/code-generation.md","articles":[]},"previous":{"title":"Install","level":"2.1","depth":1,"path":"getting-started/install.md","ref":"getting-started/install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"getting-started/configuration.md","mtime":"2022-03-11T09:07:42.007Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-11T11:25:28.765Z"},"basePath":"..","book":{"language":"ja"}});
+            gitbook.page.hasChanged({"page":{"title":"Configuration","level":"2.2","depth":1,"next":{"title":"Code Generation","level":"2.3","depth":1,"path":"getting-started/code-generation.md","ref":"getting-started/code-generation.md","articles":[]},"previous":{"title":"Install","level":"2.1","depth":1,"path":"getting-started/install.md","ref":"getting-started/install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints","prism","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"getting-started/configuration.md","mtime":"2022-03-12T05:14:27.621Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-12T12:44:34.986Z"},"basePath":"..","book":{"language":"ja"}});
         });
     </script>
 </div>

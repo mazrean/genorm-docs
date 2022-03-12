@@ -21,7 +21,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
                 
             
                 
@@ -356,7 +356,7 @@
                                 
                                 <h1 id="code-generation">Code Generation</h1>
 <p>Configuration&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x66F8;&#x3044;&#x305F;&#x3089;<code>genorm</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x7528;&#x3044;&#x3066;&#x30B3;&#x30FC;&#x30C9;&#x751F;&#x6210;&#x3057;&#x307E;&#x3059;&#x3002;<code>genorm</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;flag&#x306E;&#x6982;&#x8981;&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#x901A;&#x308A;&#x3067;&#x3059;&#x3002;</p>
-<pre><code>$ genorm -help
+<pre class="language-"><code>$ genorm -help
 Usage of ./genorm:
   -destination string
         The destination file to write.
@@ -376,7 +376,7 @@ Usage of ./genorm:
 <h3 id="modulerequired">module(required)</h3>
 <p>&#x30B3;&#x30FC;&#x30C9;&#x751F;&#x6210;&#x5148;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;module&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 <p>&#x4F8B;&#x3048;&#x3070;&#x3001;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;&#x3067;<code>go.mod</code>&#x3067;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;module&#x540D;&#x304C;<code>github.com/mazrean/genorm-workspace</code>&#x3067;&#x3042;&#x308B;&#x5834;&#x5408;&#x306F;<code>github.com/mazrean/genorm-workspace/genorm</code>&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
-<pre><code>.
+<pre class="language-"><code>.
 &#x251C;&#x2500;&#x2500; genorm //&#x751F;&#x6210;&#x5148;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;
 &#x2514;&#x2500;&#x2500; go.mod
 </code></pre><h3 id="packagerequired">package(required)</h3>
@@ -433,7 +433,7 @@ Usage of ./genorm:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Code Generation","level":"2.3","depth":1,"next":{"title":"Conectiong to Database","level":"2.4","depth":1,"path":"getting-started/conectiong-to-database.md","ref":"getting-started/conectiong-to-database.md","articles":[]},"previous":{"title":"Configuration","level":"2.2","depth":1,"path":"getting-started/configuration.md","ref":"getting-started/configuration.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"getting-started/code-generation.md","mtime":"2022-03-11T05:16:38.678Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-11T11:25:28.765Z"},"basePath":"..","book":{"language":"ja"}});
+            gitbook.page.hasChanged({"page":{"title":"Code Generation","level":"2.3","depth":1,"next":{"title":"Conectiong to Database","level":"2.4","depth":1,"path":"getting-started/conectiong-to-database.md","ref":"getting-started/conectiong-to-database.md","articles":[]},"previous":{"title":"Configuration","level":"2.2","depth":1,"path":"getting-started/configuration.md","ref":"getting-started/configuration.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints","prism","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"getting-started/code-generation.md","mtime":"2022-03-11T05:16:38.678Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-12T12:44:34.986Z"},"basePath":"..","book":{"language":"ja"}});
         });
     </script>
 </div>
