@@ -71,4 +71,4 @@ Executes the query and exits the method chain. The argument is a value satisfyin
 
 ### DoCtx
 
-Executes the query and exits the method chain. The second argument is a value satisfying the `genorm.DB`interface including [`*sql.DB`](https://pkg.go.dev/database/sql#DB)/[`*sql.Tx`](https://pkg.go.dev/database/sql#Tx) It takes this and uses it to execute the query. It also receives `context.Context` as its first argument; when context is canceled, the connection to the database is released, preventing unnecessary use of connections.
+Executes the query and exits the method chain. The second argument is a value satisfying the `genorm.DB`interface including [`*sql.DB`](https://pkg.go.dev/database/sql#DB)/[`*sql.Tx`](https://pkg.go.dev/database/sql#Tx) It takes this and uses it to execute the query. It also receives `context.Context` as its first argument. When context is canceled, the connection to the database is released, preventing unnecessary use of connections.

@@ -57,8 +57,8 @@ affectedRows, err = genorm.
 
 ### Do
 
-Executes the query and exits the method chain. The argument is a value satisfying the `genorm.DB`interface including [`*sql.DB`](https://pkg.go.dev/database/sql#DB)/[`*sql.Tx`](https://pkg.go.dev/database/sql#Tx) It takes this and uses it to execute the query.
+クエリを実行し、メソッドチェーンを終了します。引数には[`*sql.DB`](https://pkg.go.dev/database/sql#DB)/[`*sql.Tx`](https://pkg.go.dev/database/sql#Tx)を含む`genorm.DB`interfaceを満たす値を受け取り、これを使用してクエリを実行します。
 
 ### DoCtx
 
-Executes the query and exits the method chain. The second argument is a value satisfying the `genorm.DB`interface including [`*sql.DB`](https://pkg.go.dev/database/sql#DB)/[`*sql.Tx`](https://pkg.go.dev/database/sql#Tx) It takes this and uses it to execute the query. It also receives `context.Context` as its first argument. When context is canceled, the connection to the database is released, preventing unnecessary use of connections.
+クエリを実行し、メソッドチェーンを終了します。第二引数には[`*sql.DB`](https://pkg.go.dev/database/sql#DB)/[`*sql.Tx`](https://pkg.go.dev/database/sql#Tx)を含む`genorm.DB`interfaceを満たす値を受け取り、これを使用してクエリを実行します。また、第一引数で`context.Context`を受け取ります。contextがキャンセルされるとデータベースとのコネクションが解放され、無駄なコネクションの使用を防げます。
