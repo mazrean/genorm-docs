@@ -1,6 +1,6 @@
 # GenORM
 
-SQL Builder to prevent SQL mistakes using Go language generics
+SQL Builder to prevent SQL mistakes using the Golang generics
 
 ### Feature
 
