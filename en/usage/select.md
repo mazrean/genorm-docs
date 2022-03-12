@@ -154,8 +154,12 @@ Executes the query and exits the method chain. The argument is a value satisfyin
 
 It is used to retrieve only one record and is automatically set to `LIMIT 1`. Therefore, it cannot be used at the same time as the `Limit` method and will return an error if the `Limit` method is already used in the method chain.
 
+Returns a `genorm.ErrRecordNotFound` error if the record was not found.
+
 ### GetCtx
 
 Executes the query and exits the method chain. The second argument is a value satisfying the `genorm.DB`interface including [`*sql.DB`](https://pkg.go.dev/database/sql#DB)/[`*sql.Tx`](https://pkg.go.dev/database/sql#Tx) It takes this and uses it to execute the query. It also receives `context.Context` as its first argument. When context is canceled, the connection to the database is released, preventing unnecessary use of connections.
 
 It is used to retrieve only one record and is automatically set to `LIMIT 1`. Therefore, it cannot be used at the same time as the `Limit` method and will return an error if the `Limit` method is already used in the method chain.
+
+Returns a `genorm.ErrRecordNotFound` error if the record was not found.
