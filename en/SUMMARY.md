@@ -7,7 +7,7 @@
 * [Install](getting-started/install.md)
 * [Configuration](getting-started/configuration.md)
 * [Code Generation](getting-started/code-generation.md)
-* [Conectiong to Database](getting-started/conectiong-to-database.md)
+* [Connecting to Database](getting-started/connecting-to-database.md)
 
 ## Usage
 

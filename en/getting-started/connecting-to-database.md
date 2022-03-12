@@ -1,4 +1,4 @@
-# Conectiong to Database
+# Connecting to Database
 
 GenORM executes queries using [`*sql.DB`](https://pkg.go.dev/database/sql#DB)/[`*sql.Tx`](https://pkg.go.dev/database/sql#Tx). Therefore, connection to the database can be made in the same way as in `database/sql`. However, we have only confirmed that it works with MySQL and MariaDB.
 

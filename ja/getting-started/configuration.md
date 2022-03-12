@@ -9,7 +9,7 @@ Goの構造体を用いて、Configurationファイルにテーブル構成に�
 
 ### Table
 
-テーブルはstructで表現します。また、テーブル名はstructのpointerをrecieverにとる`TableName`メソッドで返します。
+テーブルはstructで表現します。また、テーブル名はstructのpointerをreceiverにとる`TableName`メソッドで返します。
 
 #### 例
 

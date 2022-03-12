@@ -60,7 +60,7 @@ userValues, err := genorm.
 	OrderBy(genorm.Asc, user.ID).
 	GetAll(db)
 
-// SELECT DICTINCT `id`, `name`, `created_at` FROM `users`
+// SELECT DISTINCT `id`, `name`, `created_at` FROM `users`
 // userValues: []orm.UserTable
 userValues, err := genorm.
 	Select(orm.User()).

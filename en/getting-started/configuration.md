@@ -9,7 +9,7 @@ Describe the table configuration in the Configuration file using the Go structur
 
 ### Table
 
-Tables are represented by structs. The table name is returned by the `TableName` method, which takes a reciever of the struct's pointer.
+Tables are represented by structs. The table name is returned by the `TableName` method, which takes a receiver of the struct's pointer.
 
 #### Example
 
