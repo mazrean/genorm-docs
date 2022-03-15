@@ -5,7 +5,7 @@ GenORM uses the CLI to generate code. The `genorm`package is used to invoke quer
 #### CLI
 
 ```
-go install github.com/mazrean/genorm/cmd/genorm@v1.0.0
+go install github.com/mazrean/genorm/cmd/genorm@v1.0.1
 ```
 
 #### Package

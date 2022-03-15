@@ -5,7 +5,7 @@ GenORMではCLIでコードの生成を行います。クエリの呼び出し�
 #### CLI
 
 ```
-go install github.com/mazrean/genorm/cmd/genorm@v1.0.0
+go install github.com/mazrean/genorm/cmd/genorm@v1.0.1
 ```
 
 #### Package
