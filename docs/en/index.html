@@ -391,6 +391,74 @@ userValues<span class="token punctuation">,</span> err <span class="token operat
     <span class="token function">Where</span><span class="token punctuation">(</span>genorm<span class="token punctuation">.</span><span class="token function">EqLit</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>IDExpr<span class="token punctuation">,</span> uuid<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
     <span class="token function">GetAll</span><span class="token punctuation">(</span>db<span class="token punctuation">)</span>
 </code></pre>
+<h3 id="differences-from-other-tools">Differences from other tools</h3>
+<p>Explain how this differs from existing GORM and ent.</p>
+<h4 id="gorm">GORM</h4>
+<p>GORM uses <code>interface{}</code> to flexibly accept arguments, allowing for intuitive query construction.
+On the other hand, type constraints are very weak.
+For this reason, there are few bugs that can be played at compile time, and bugs can easily be introduced.
+Another problem is that it is difficult to understand the SQL that is actually executed, and it is easy for the SQL to behave differently from what is expected.</p>
+<p>In contrast, GenORM uses type constraints to find as many bugs as possible at compile time.
+We are also conscious of making it easy to imagine the SQL to be executed from the Go code, and we hope that the example code so far has been easy to imagine the SQL to be executed from the code.</p>
+<p>Thus, GenORM and GORM differ greatly in both philosophy and function.</p>
+<h4 id="ent">ent</h4>
+<p>We believe that the most significant difference in functionality between Go and ent is the Golang types that can be used.
+In ent, only a finite number of types can be used, including types corresponding to primitive types such as int and bool, plus time.Time and UUID.
+In contrast, GenORM allows any type<sup><a href="#fn_2" id="reffn_2">2</a></sup> that satisfies the conditions of the <code>genorm.ExprType</code>interface, and then sets restrictions such as only types of the same type can be compared.
+This eliminates the need for unnecessary type conversions and allows for stronger constraints to be set by using Defined Type<sup><a href="#fn_3" id="reffn_3">3</a></sup>.</p>
+<p>For example, by defining <code>UserID</code> and <code>MessageID</code> as unique types as shown below, constraints such as &quot;user IDs and message IDs cannot be compared&quot; can be specified.</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> MessageID uuid<span class="token punctuation">.</span>UUID
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>mid <span class="token operator">*</span>MessageID<span class="token punctuation">)</span> <span class="token function">Scan</span><span class="token punctuation">(</span>src any<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token operator">*</span>uuid<span class="token punctuation">.</span>UUID<span class="token punctuation">)</span><span class="token punctuation">(</span>mid<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Scan</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>mid MessageID<span class="token punctuation">)</span> <span class="token function">Value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>driver<span class="token punctuation">.</span>Value<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> uuid<span class="token punctuation">.</span><span class="token function">UUID</span><span class="token punctuation">(</span>mid<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Value</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">type</span> UserID uuid<span class="token punctuation">.</span>UUID
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>uid <span class="token operator">*</span>UserID<span class="token punctuation">)</span> <span class="token function">Scan</span><span class="token punctuation">(</span>src any<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token operator">*</span>uuid<span class="token punctuation">.</span>UUID<span class="token punctuation">)</span><span class="token punctuation">(</span>uid<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Scan</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>uid UserID<span class="token punctuation">)</span> <span class="token function">Value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>driver<span class="token punctuation">.</span>Value<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> uuid<span class="token punctuation">.</span><span class="token function">UUID</span><span class="token punctuation">(</span>uid<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Value</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>This prevents mistakes, as code such as the following will result in a compilation error.</p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// SELECT * FROM `messages` WHERE `messages`.`id`=`messages`.`user_id`</span>
+messageValues<span class="token punctuation">,</span> err <span class="token operator">:=</span> genorm<span class="token punctuation">.</span>
+    <span class="token function">Select</span><span class="token punctuation">(</span>orm<span class="token punctuation">.</span><span class="token function">Message</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+    <span class="token function">Where</span><span class="token punctuation">(</span>genorm<span class="token punctuation">.</span><span class="token function">Eq</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>IDExpr<span class="token punctuation">,</span> message<span class="token punctuation">.</span>UserIDExpr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+    <span class="token function">GetAll</span><span class="token punctuation">(</span>db<span class="token punctuation">)</span>
+</code></pre>
+<p>It is also important to note that GenORM allows queries to be constructed with a method chain similar to SQL.
+Because ent is an &quot;entity framework,&quot; database operations are abstracted as entity operations.
+This has its advantages, but as with GORM, it also has the aspect of making the SQL to be executed difficult to understand.
+This increases the probability of unintentionally writing a process that has performance problems.
+In this respect, GenORM makes it easy to understand the SQL to be executed, so such problems are less likely to occur.</p>
+<blockquote id="fn_2">
+<sup>2</sup>. See <a href="https://mazrean.github.io/genorm-docs/en/usage/value-type.html" target="_blank">https://mazrean.github.io/genorm-docs/en/usage/value-type.html</a> for more information<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#x21A9;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. See <a href="https://mazrean.github.io/genorm-docs/en/advanced-usage/defined-type.html" target="_blank">https://mazrean.github.io/genorm-docs/en/advanced-usage/defined-type.html</a> for more information<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#x21A9;</a>
+</blockquote>
+<h3 id="mechanism">Mechanism</h3>
+<p>This section explains how the code example works.
+The definition of <code>genorm.EqLit</code> is as follows.</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> EqLit<span class="token punctuation">[</span>T Table<span class="token punctuation">,</span> S ExprType<span class="token punctuation">]</span><span class="token punctuation">(</span>
+    expr TypedTableExpr<span class="token punctuation">[</span>T<span class="token punctuation">,</span> S<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    literal S<span class="token punctuation">,</span>
+<span class="token punctuation">)</span> TypedTableExpr<span class="token punctuation">[</span>T<span class="token punctuation">,</span> WrappedPrimitive<span class="token punctuation">[</span><span class="token builtin">bool</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+    <span class="token comment">// &#x7701;&#x7565;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Notice the <code>TypedTableExpr[T, S]</code> part.
+As you can see from the <code>[T Table, S ExprType]</code> part, <code>T</code> is the type that represents the table used by the SQL expression, and <code>S</code> is the Go language type corresponding to the SQL expression.
+Thus, GenORM limits the columns that can be used and the values that can be compared by having the table used by the SQL expression and the corresponding type of the Go language as type parameters.</p>
+<p>Thus, because SQL expressions are typed, SQL can be restricted to operators such as <code>&gt;</code>, <code>&lt;</code>, and <code>AND</code>, functions such as <code>COUNT()</code>, and in the future, database-specific functions as well.</p>
 
                                 
                                 </section>
@@ -430,7 +498,7 @@ userValues<span class="token punctuation">,</span> err <span class="token operat
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"GenORM","level":"1.1","depth":1,"next":{"title":"Install","level":"2.1","depth":1,"path":"getting-started/install.md","ref":"getting-started/install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints","prism","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"README.md","mtime":"2022-03-17T05:33:40.716Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-17T05:34:51.762Z"},"basePath":".","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"GenORM","level":"1.1","depth":1,"next":{"title":"Install","level":"2.1","depth":1,"path":"getting-started/install.md","ref":"getting-started/install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints","prism","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"README.md","mtime":"2022-03-17T06:22:29.062Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-17T06:25:17.750Z"},"basePath":".","book":{"language":"en"}});
         });
     </script>
 </div>
