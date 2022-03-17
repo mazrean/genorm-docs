@@ -404,8 +404,8 @@ We are also conscious of making it easy to imagine the SQL to be executed from t
 <h4 id="ent">ent</h4>
 <p>We believe that the most significant difference in functionality between Go and ent is the Golang types that can be used.
 In ent, only a finite number of types can be used, including types corresponding to primitive types such as int and bool, plus time.Time and UUID.
-In contrast, GenORM allows any type<sup><a href="#fn_2" id="reffn_2">2</a></sup> that satisfies the conditions of the <code>genorm.ExprType</code>interface, and then sets restrictions such as only types of the same type can be compared.
-This eliminates the need for unnecessary type conversions and allows for stronger constraints to be set by using Defined Type<sup><a href="#fn_3" id="reffn_3">3</a></sup>.</p>
+In contrast, GenORM allows <a href="usage/value-type.html">any type that satisfies the conditions of the <code>genorm.ExprType</code>interface</a>, and then sets restrictions such as only types of the same type can be compared.
+This eliminates the need for unnecessary type conversions and allows for <a href="advanced-usage/defined-type.html">stronger constraints to be set by using Defined Type</a>.</p>
 <p>For example, by defining <code>UserID</code> and <code>MessageID</code> as unique types as shown below, constraints such as &quot;user IDs and message IDs cannot be compared&quot; can be specified.</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">type</span> MessageID uuid<span class="token punctuation">.</span>UUID
 
@@ -439,12 +439,6 @@ Because ent is an &quot;entity framework,&quot; database operations are abstract
 This has its advantages, but as with GORM, it also has the aspect of making the SQL to be executed difficult to understand.
 This increases the probability of unintentionally writing a process that has performance problems.
 In this respect, GenORM makes it easy to understand the SQL to be executed, so such problems are less likely to occur.</p>
-<blockquote id="fn_2">
-<sup>2</sup>. See <a href="https://mazrean.github.io/genorm-docs/en/usage/value-type.html" target="_blank">https://mazrean.github.io/genorm-docs/en/usage/value-type.html</a> for more information<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#x21A9;</a>
-</blockquote>
-<blockquote id="fn_3">
-<sup>3</sup>. See <a href="https://mazrean.github.io/genorm-docs/en/advanced-usage/defined-type.html" target="_blank">https://mazrean.github.io/genorm-docs/en/advanced-usage/defined-type.html</a> for more information<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#x21A9;</a>
-</blockquote>
 <h3 id="mechanism">Mechanism</h3>
 <p>This section explains how the code example works.
 The definition of <code>genorm.EqLit</code> is as follows.</p>
@@ -498,7 +492,7 @@ Thus, GenORM limits the columns that can be used and the values that can be comp
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"GenORM","level":"1.1","depth":1,"next":{"title":"Install","level":"2.1","depth":1,"path":"getting-started/install.md","ref":"getting-started/install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints","prism","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"README.md","mtime":"2022-03-17T06:22:29.062Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-17T06:29:23.335Z"},"basePath":".","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"GenORM","level":"1.1","depth":1,"next":{"title":"Install","level":"2.1","depth":1,"path":"getting-started/install.md","ref":"getting-started/install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hints","prism","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"README.md","mtime":"2022-03-17T07:09:00.542Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-17T07:09:24.898Z"},"basePath":".","book":{"language":"en"}});
         });
     </script>
 </div>
