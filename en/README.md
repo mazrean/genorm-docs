@@ -2,6 +2,8 @@
 
 SQL Builder to prevent SQL mistakes using the Golang generics
 
+repository: https://github.com/mazrean/genorm
+
 ### Feature
 
 By mapping SQL expressions to appropriate golang types using generics, you can discover many SQL mistakes at the time of compilation that are not prevented by traditional Golang ORMs or query builders.

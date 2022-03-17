@@ -2,6 +2,8 @@
 
 Go言語のジェネリクスを利用したSQLのミスを防ぐSQL Builder
 
+リポジトリ: https://github.com/mazrean/genorm
+
 ### 特徴
 
 ジェネリクスを用いてSQLの表現に適切なGoの型を対応づけることで
