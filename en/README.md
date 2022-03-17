@@ -68,8 +68,8 @@ Thus, GenORM and GORM differ greatly in both philosophy and function.
 #### ent
 We believe that the most significant difference in functionality between Go and ent is the Golang types that can be used.
 In ent, only a finite number of types can be used, including types corresponding to primitive types such as int and bool, plus time.Time and UUID.
-In contrast, GenORM allows any type[^2] that satisfies the conditions of the `genorm.ExprType`interface, and then sets restrictions such as only types of the same type can be compared.
-This eliminates the need for unnecessary type conversions and allows for stronger constraints to be set by using Defined Type[^3].
+In contrast, GenORM allows [any type that satisfies the conditions of the `genorm.ExprType`interface](./usage/value-type.html), and then sets restrictions such as only types of the same type can be compared.
+This eliminates the need for unnecessary type conversions and allows for [stronger constraints to be set by using Defined Type](./advanced-usage/defined-type.html).
 
 For example, by defining `UserID` and `MessageID` as unique types as shown below, constraints such as "user IDs and message IDs cannot be compared" can be specified.
 ```go
@@ -108,9 +108,6 @@ Because ent is an "entity framework," database operations are abstracted as enti
 This has its advantages, but as with GORM, it also has the aspect of making the SQL to be executed difficult to understand.
 This increases the probability of unintentionally writing a process that has performance problems.
 In this respect, GenORM makes it easy to understand the SQL to be executed, so such problems are less likely to occur.
-
-[^2]: See https://mazrean.github.io/genorm-docs/en/usage/value-type.html for more information
-[^3]: See https://mazrean.github.io/genorm-docs/en/advanced-usage/defined-type.html for more information
 
 ### Mechanism
 This section explains how the code example works.
