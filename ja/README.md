@@ -69,7 +69,8 @@ GORMでは`interface{}`を利用して柔軟に引数を受け入れることで
 entとの機能面での最も大きな違いは使用できるGo言語の型と考えています。
 entではint、boolなどのプリミティブ型に対応する型にtime.TimeやUUIDなどを加えた、有限個の型のみが使用できます。
 対して、GenORMでは[`genorm.ExprType`interfaceの条件を満たす任意の型](./usage/value-type.html)を使用し、その上で同一の型でのみ比較可能、などの制約が設定されています。
-これにより、不要な型変換を行う必要がなく、また、[Defined Typeを用いてより強力な制約](./advanced-usage/defined-type.html)を設定できるようになっています。
+これにより、不要な型変換を行う必要がなく、また、Defined Typeを用いてより強力な制約を設定できるようになっています。
+詳細や例は[Defined Type](./advanced-usage/defined-type.html)でみることができます。
 
 また、GenORMではSQLに近いメソッドチェーンでクエリを構築できる点も重要です。
 entは「entity framework」であるため、データベースの操作がentityの操作として抽象化されています。
